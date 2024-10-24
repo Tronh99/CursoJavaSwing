@@ -61,7 +61,6 @@ public class ejercicio {
 		panelCentro.add(btn2);
 		
 		
-//		ventana.add(pcaja1);
 		ventana.add(panelNorte, BorderLayout.NORTH);
 		ventana.add(panelCentro, BorderLayout.CENTER);
 				
