@@ -7,8 +7,10 @@ public class index {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		ventanaImagen vi = new ventanaImagen();
-		vi.pintaImagen();
+//		ventanaImagen vi = new ventanaImagen();
+//		vi.pintaImagen();
+		ejercicio ej = new ejercicio();
+		ej.seguridad();
 
 	}
 
