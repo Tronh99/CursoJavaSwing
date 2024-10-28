@@ -5,9 +5,9 @@ import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import java.awt.BorderLayout;
+import javax.swing.BoxLayout;
 import javax.swing.JLabel;
 import javax.swing.JButton;
-import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
 import java.awt.Image;
 import java.net.URL;
@@ -37,7 +37,7 @@ public class ejercicio {
 		
 		
 		panelCentro.setLayout(new GridLayout(3,3));
-		panelOeste.setLayout(new GridLayout(1,2));
+		panelOeste.setLayout(new BoxLayout(panelOeste, BoxLayout.Y_AXIS));
 		
 		etiqueta1.setText("Inicio de sesion.");
 		etiqueta2.setText("Usuario.");
@@ -53,15 +53,30 @@ public class ejercicio {
 		
 		btn1.setText("Aceptar");
 		btn2.setText("Cancelar");
+	
 		
-		URL laurl1 = this.getClass().getResource("Imagenes/usuario.png");
-		ImageIcon imageIcon1 = new ImageIcon(laurl1);
-		Image image1 = imageIcon1.getImage().getScaledInstance(50, 50, Image.SCALE_SMOOTH); // Escalar la imagen
-        ImageIcon scaledIcon1 = new ImageIcon(image1);
-		URL laurl2 = this.getClass().getResource("Imagenes/candado.png");
-		ImageIcon imageIcon2 = new ImageIcon(laurl2);
-		
-		
+		 // Cargar y escalar la primera imagen
+        URL laurl1 = this.getClass().getResource("/Imagenes/usuario.png");
+        JLabel labelIcon1 = new JLabel();  // Creamos un JLabel para la primera imagen
+        if (laurl1 == null) {
+            System.out.println("No se encontró la imagen usuario.png");
+        } else {
+            ImageIcon imageIcon1 = new ImageIcon(laurl1);
+            Image image1 = imageIcon1.getImage().getScaledInstance(50, 50, Image.SCALE_SMOOTH);
+            labelIcon1.setIcon(new ImageIcon(image1));  // Agregamos la imagen escalada al JLabel
+        }
+
+        // Cargar y escalar la segunda imagen
+        URL laurl2 = this.getClass().getResource("/Imagenes/candado.png");
+        JLabel labelIcon2 = new JLabel();  // Creamos un JLabel para la segunda imagen
+        if (laurl2 == null) {
+            System.out.println("No se encontró la imagen candado.png");
+        } else {
+            ImageIcon imageIcon2 = new ImageIcon(laurl2);
+            Image image2 = imageIcon2.getImage().getScaledInstance(50, 50, Image.SCALE_SMOOTH);
+            labelIcon2.setIcon(new ImageIcon(image2));  // Agregamos la imagen escalada al JLabel
+        }
+
 		
 		pcaja1.add(caja1);
 		pcaja2.add(caja2);
@@ -73,8 +88,8 @@ public class ejercicio {
 		panelCentro.add(pcaja2);
 		panelCentro.add(btn1);
 		panelCentro.add(btn2);
-		panelOeste.add(new JLabel(imageIcon1));
-		panelOeste.add(new JLabel(imageIcon2));
+		panelOeste.add(labelIcon1);  // Agregamos el JLabel con la imagen escalada
+        panelOeste.add(labelIcon2);  // Agregamos el JLabel con la imagen escalada
 		
 		ventana.add(panelNorte, BorderLayout.NORTH);
 		ventana.add(panelCentro, BorderLayout.CENTER);
